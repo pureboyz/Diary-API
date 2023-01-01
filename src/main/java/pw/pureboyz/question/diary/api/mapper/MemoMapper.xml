@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pw.pureboyz.question.diary.api.mapper.MemoMapper">
+
+	<insert id="create" parameterType="pw.pureboyz.question.diary.api.dto.MemoDTO" useGeneratedKeys="true" keyProperty="seq">
+		INSERT INTO
+			MEMO
+		(
+			 CONTENTS
+			,CREATE_DATE
+		)
+		VALUES
+		(
+			 #{contents}
+			,now()
+		)
+	</insert>
+	
+	<select id="SelectMemoList" parameterType="pw.pureboyz.question.diary.api.dto.MemoDTO" resultType="pw.pureboyz.question.diary.api.dto.MemoDTO">
+		SELECT
+			 SEQ
+			,CONTENTS
+			,DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %H:%i:%S') AS CREATE_DATE
+			,DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%S') AS UPDATE_DATE
+			,DATE_FORMAT(DELETE_DATE, '%Y-%m-%d %H:%i:%S') AS DELETE_DATE
+		FROM
+			MEMO
+		WHERE 1=1
+			AND DELETE_DATE IS NULL
+		ORDER BY
+			CREATE_DATE DESC
+		LIMIT #{begin}, 10
+	</select>
+	
+	<select id="SelectMemo" parameterType="pw.pureboyz.question.diary.api.dto.MemoDTO" resultType="pw.pureboyz.question.diary.api.dto.MemoDTO">
+		SELECT
+			 SEQ
+			,CONTENTS
+			,DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %H:%i:%S') AS CREATE_DATE
+			,DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%S') AS UPDATE_DATE
+			,DATE_FORMAT(DELETE_DATE, '%Y-%m-%d %H:%i:%S') AS DELETE_DATE
+		FROM
+			MEMO
+		WHERE 1=1
+			AND SEQ = #{seq}
+	</select>
+	
+	<update id="UpdateMemo" parameterType="pw.pureboyz.question.diary.api.dto.MemoDTO">
+		UPDATE
+			MEMO
+		SET
+			 CONTENTS 		= #{contents}
+			,UPDATE_DATE 	= now()
+		WHERE 1=1
+			AND SEQ = #{seq}
+	</update>
+	
+	<update id="DeleteMemo" parameterType="pw.pureboyz.question.diary.api.dto.MemoDTO">
+		UPDATE
+			MEMO
+		SET
+			DELETE_DATE = now()
+		WHERE 1=1
+			AND SEQ = #{seq}
+	</update>
+
+</mapper>
