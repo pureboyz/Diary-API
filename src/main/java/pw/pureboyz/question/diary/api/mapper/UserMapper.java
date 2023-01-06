@@ -10,4 +10,6 @@ public interface UserMapper
 
 	int create(UserDTO userDTO);
 
+	UserDTO selectUser(UserDTO userDTO);
+
 }

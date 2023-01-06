@@ -20,4 +20,10 @@ public class UserController
 	{
 		return userService.create(userDTO);
 	}
+	
+	@PostMapping("/SelectUser")
+	public ResultMap selectUser(UserDTO userDTO)
+	{
+		return userService.selectUser(userDTO);
+	}
 }

@@ -43,6 +43,7 @@
 		FROM
 			MEMO
 		WHERE 1=1
+			AND DELETE_DATE IS NULL
 			AND SEQ = #{seq}
 	</select>
 	

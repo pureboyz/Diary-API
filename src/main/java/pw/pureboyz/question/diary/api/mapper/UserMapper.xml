@@ -27,4 +27,23 @@
 		)
 	</insert>
 	
+	<select id="selectUser" parameterType="pw.pureboyz.question.diary.api.dto.UserDTO" resultType="pw.pureboyz.question.diary.api.dto.UserDTO">
+		SELECT
+			 SEQ_USER
+			,ID
+			,NAME
+			,GIVEN_NAME
+			,FAMILY_NAME
+			,EMAIL
+			,PHOTO_URL
+			,DATE_FORMAT(CREATE_DATE, '%Y-%m-%d %H:%i:%S') AS CREATE_DATE
+			,DATE_FORMAT(UPDATE_DATE, '%Y-%m-%d %H:%i:%S') AS UPDATE_DATE
+			,DATE_FORMAT(DELETE_DATE, '%Y-%m-%d %H:%i:%S') AS DELETE_DATE
+		FROM
+			USER
+		WHERE 1=1
+			AND DELETE_DATE IS NULL
+			AND ID = #{id}
+	</select>
+	
 </mapper>
