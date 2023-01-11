@@ -53,4 +53,24 @@ public class UserService
 		return resultMap;
 	}
 
+	public ResultMap update(UserDTO userDTO)
+	{
+		ResultMap resultMap = new ResultMap();
+		
+		int result = userMapper.update(userDTO);
+		if(0 < result)
+		{
+			resultMap.setCode(ResultCode.OK.getCode());
+			resultMap.setMessage(ResultCode.OK.getMessage());
+			resultMap.setData(userDTO);
+		}
+		else
+		{
+			resultMap.setCode(ResultCode.INSERT_FAIL.getCode());
+			resultMap.setMessage(ResultCode.INSERT_FAIL.getMessage());
+		}
+		
+		return resultMap;
+	}
+
 }

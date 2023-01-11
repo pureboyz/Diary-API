@@ -12,4 +12,6 @@ public interface UserMapper
 
 	UserDTO selectUser(UserDTO userDTO);
 
+	int update(UserDTO userDTO);
+
 }

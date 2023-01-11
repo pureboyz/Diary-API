@@ -46,4 +46,37 @@
 			AND ID = #{id}
 	</select>
 	
+	<insert id="update" parameterType="pw.pureboyz.question.diary.api.dto.UserDTO">
+		INSERT INTO
+			USER
+		(
+			 ID
+			,NAME
+			,GIVEN_NAME
+			,FAMILY_NAME
+			,EMAIL
+			,PHOTO_URL
+			,CREATE_DATE
+		)
+		VALUES
+		(
+			 #{id}
+			,#{name}
+			,#{givenName}
+			,#{familyName}
+			,#{email}
+			,#{photoUrl}
+			,now()
+		)
+		ON DUPLICATE KEY
+		UPDATE
+			 ID 			= #{id}
+			,NAME 			= #{name}
+			,GIVEN_NAME 	= #{givenName}
+			,FAMILY_NAME 	= #{familyName}
+			,EMAIL 			= #{email}
+			,PHOTO_URL 		= #{photoUrl}
+			,UPDATE_DATE 	= now()
+	</insert>
+	
 </mapper>

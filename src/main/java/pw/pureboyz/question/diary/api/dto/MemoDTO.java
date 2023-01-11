@@ -10,6 +10,7 @@ import lombok.ToString;
 public class MemoDTO
 {
 	int 	seq;
+	String 	userId;
 	String 	contents;
 	String 	createDate;
 	String 	updateDate;

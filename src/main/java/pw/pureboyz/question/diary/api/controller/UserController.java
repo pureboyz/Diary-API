@@ -15,15 +15,21 @@ public class UserController
 {
 	@Autowired UserService userService;
 	
-	@PostMapping("/Create")
+	@PostMapping("/create")
 	public ResultMap create(UserDTO userDTO)
 	{
 		return userService.create(userDTO);
 	}
 	
-	@PostMapping("/SelectUser")
+	@PostMapping("/selectUser")
 	public ResultMap selectUser(UserDTO userDTO)
 	{
 		return userService.selectUser(userDTO);
+	}
+	
+	@PostMapping("/update")
+	public ResultMap update(UserDTO userDTO)
+	{
+		return userService.update(userDTO);
 	}
 }

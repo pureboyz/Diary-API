@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pw.pureboyz</groupId>
 	<artifactId>QuestionDiary-API</artifactId>
-	<version>20230106-001</version>
+	<version>20230111-001</version>
 	<packaging>war</packaging>
 	<name>QuestionDiary-API</name>
 	<description>QuestionDiary-API</description>
